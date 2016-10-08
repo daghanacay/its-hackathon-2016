@@ -1,21 +1,19 @@
 package com.its.hack.model;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 
 public class Merchant implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	public String name;
+	public String merchantName; // MerchantPOIResponse.places.place[1].merchantName
 	
-	public BigDecimal latitude;
+	public Object latitude; // MerchantPOIResponse.places.place[0].latitude
 	
-	public BigDecimal longitude;
+	public Object longitude; // MerchantPOIResponse.places.place[0].longitude
 	
-	public String industry;
+	public String industry; // MerchantPOIResponse.places.place[0].industry
 	// Remove this
 	public double heat;
 
-	
 }
