@@ -12,6 +12,7 @@ import org.json.simple.parser.JSONParser;
 import org.osgi.service.component.annotations.Component;
 
 import com.its.hack.converter.MerchantPointOfInterestToMerchantListConverter;
+import com.its.hack.converter.RawBikeStationArrayToBikeStationListConverter;
 import com.its.hack.mastercard.api.locationservices.RequestConfig;
 import com.its.hack.model.BikeStation;
 import com.its.hack.model.Merchant;
@@ -71,6 +72,7 @@ public class HackApplication implements REST {
 	public List<BikeStation> getBikeStations() 
 	{
 		HttpRequestController controller = new HttpRequestController();
+		List<BikeStation> bikeStationList = null;
 		try 
 		{
 			HttpResponse response = controller.getRequest(TrafficAPIConstants.URL, TrafficAPIConstants.JSON_HEADER);
@@ -86,12 +88,8 @@ public class HackApplication implements REST {
 			JSONObject json = (JSONObject)parser.parse(responseResult);
 			JSONObject networkJson = (JSONObject)json.get(TrafficAPIConstants.NETWORK_KEY);
 			JSONArray stationJsonArray = (JSONArray)networkJson.get(TrafficAPIConstants.STATIONS_KEY);
-			Iterator stationIterator = stationJsonArray.iterator();
-			while (stationIterator.hasNext()) 
-			{
-			  JSONObject stationJson = (JSONObject)stationIterator.next();
-			  System.out.println(stationJson.get("empty_slots"));
-			}
+
+			bikeStationList = RawBikeStationArrayToBikeStationListConverter.convertRawBikeStationArrayToBikeStationList(stationJsonArray);
 		}
 		catch (Exception ex)
 		{
@@ -100,7 +98,6 @@ public class HackApplication implements REST {
 		finally {
 			controller.close();
 		}
-		
-		return Collections.<BikeStation>emptyList();
+		return bikeStationList;
 	}
 }
