@@ -7,16 +7,25 @@ app
 			"$http",
 			"$interval",
 			function($scope, $http, $interval) {
+			     var mapEvents = ['click', 'contextmenu', 'popupopen', 'popupclose'];
+	             var eventName = 'leafletDirectiveMap.' + 'popupopen';
+	             $scope.$on(eventName, function(event){
+	              // TODO write here fetching the destination data and drawing it
+	                  $scope.eventDetected = event.name;
+	             });
+	            
 			    
-			    
-			    $scope.$on('$routeChangeStart', function(event,
-				    next, current) {
-				$scope.mapHeight = "500px";
-			    });
-
 			    $interval(function() {
 				updateData();
-				$scope.layers.overlays.heat.doRefresh = true;
+				markerData = $scope.sensorData.map(function(dat) {
+						return {
+							lat : dat.latitude,
+							lng : dat.longitude,
+							message : 'TODO add data to pop up'
+						}
+				  });
+				$scope.markers = markerData; 
+				
 			    }, 10000);
 
 			    updateData = function() {
@@ -24,26 +33,6 @@ app
 					function(data) {
 					    // Store the data
 					    $scope.sensorData = data;
-					    // Convert sensor data to be used by
-					    // the heat map
-					    mapData = data.map(function(dat) {
-						return [ dat.latitude,
-							dat.longitude,
-							dat.heat]
-					    });
-					    $scope.layers.overlays = {
-						heat : {
-						    name : 'Heat Map',
-						    type : 'heat',
-						    data : mapData,
-						    layerOptions : {
-							radius : 20,
-							blur : 10
-						    },
-						    visible : true,
-						    doRefresh : true
-						}
-					    };
 					});
 			    }
 

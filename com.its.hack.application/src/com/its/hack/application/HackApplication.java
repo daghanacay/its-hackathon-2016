@@ -44,7 +44,7 @@ public class HackApplication implements REST {
 		returnVal.latitude = new BigDecimal(-37.8136);
 		returnVal.industry = "test Industry";
 		returnVal.name = "test name";
-		returnVal.heat = 1.0;
+		
 		// RequestConfig config = new RequestConfig(CONSUMER_KEY_VALUE,
 		// KEY_ALIAS_VALUE, KEY_PASSWORD_VALUE, KEY_PATH_VALUE);
 		// ApiConfig.setAuthentication(config.getAuthentication()); // You only
