@@ -1,25 +1,23 @@
 package com.its.hack.application;
 
 
-import java.io.FileInputStream;
-import java.io.InputStream;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
 import org.osgi.service.component.annotations.Component;
 
+import com.its.hack.mastercard.api.locationservices.RequestConfig;
 import com.its.hack.model.Merchant;
+import com.mastercard.api.core.ApiConfig;
+import com.mastercard.api.core.model.RequestMap;
+import com.mastercard.api.places.MerchantCategoryCodes;
 
 import osgi.enroute.configurer.api.RequireConfigurerExtender;
 import osgi.enroute.google.angular.capabilities.RequireAngularWebResource;
 import osgi.enroute.rest.api.REST;
 import osgi.enroute.twitter.bootstrap.capabilities.RequireBootstrapWebResource;
 import osgi.enroute.webserver.capabilities.RequireWebServerExtender;
-
-import com.mastercard.api.core.ApiConfig;
-import com.mastercard.api.core.model.RequestMap;
-import com.mastercard.api.core.security.oauth.OAuthAuthentication;
-import com.mastercard.api.places.MerchantCategoryCodes;
 
 @RequireAngularWebResource(resource={"angular.js","angular-resource.js", "angular-route.js"}, priority=1000)
 @RequireBootstrapWebResource(resource="css/bootstrap.css")
@@ -40,14 +38,10 @@ public class HackApplication implements REST {
 	}
 	
 
-	public void getMerchants() throws Exception
+	public List<Merchant> getMerchants() throws Exception
 	{
-        String consumerKey = CONSUMER_KEY_VALUE;   // You should copy this from "My Keys" on your project page e.g. UTfbhDCSeNYvJpLL5l028sWL9it739PYh6LU5lZja15xcRpY!fd209e6c579dc9d7be52da93d35ae6b6c167c174690b72fa
-        String keyAlias = KEY_ALIAS_VALUE;   // For production: change this to the key alias you chose when you created your production key
-        String keyPassword = KEY_PASSWORD_VALUE;   // For production: change this to the key alias you chose when you created your production key
-        InputStream is = new FileInputStream(KEY_PATH_VALUE); // e.g. /Users/yourname/project/sandbox.p12 | C:\Users\yourname\project\sandbox.p12
-        ApiConfig.setAuthentication(new OAuthAuthentication(consumerKey, is, keyAlias, keyPassword));   // You only need to set this once
-
+		RequestConfig config = new RequestConfig(CONSUMER_KEY_VALUE, KEY_ALIAS_VALUE, KEY_PASSWORD_VALUE, KEY_PATH_VALUE);
+        ApiConfig.setAuthentication(config.getAuthentication());   // You only need to set this once
         ApiConfig.setSandbox(false);     // For production: use ApiConfig.setSandbox(false);
 
         RequestMap map = new RequestMap();
@@ -80,6 +74,7 @@ public class HackApplication implements REST {
             
         }
         
+        return Collections.<Merchant>emptyList();
     
 	}
 
