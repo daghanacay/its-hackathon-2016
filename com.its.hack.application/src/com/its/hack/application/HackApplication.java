@@ -18,5 +18,7 @@ public class HackApplication implements REST {
 	public String getUpper(String string) {
 		return string.toUpperCase();
 	}
+	
+	
 
 }
