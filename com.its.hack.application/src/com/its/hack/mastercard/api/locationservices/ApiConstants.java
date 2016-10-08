@@ -1,4 +1,4 @@
-package com.its.hack.mastercard.api;
+package com.its.hack.mastercard.api.locationservices;
 
 public class ApiConstants {
 	

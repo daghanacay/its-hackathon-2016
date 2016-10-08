@@ -13,7 +13,7 @@ Bundle-Description: \
 Private-Package: \
 	com.its.hack.application,\
 	com.its.hack.model,\
-	com.its.hack.mastercard.api
+	com.its.hack.mastercard.api.locationservices
 
 EnRoute-Application: 	com.its.hack
 JPM-Command:			hack
