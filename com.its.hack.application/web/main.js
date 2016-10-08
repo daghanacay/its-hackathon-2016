@@ -21,7 +21,7 @@ app
 						return {
 							lat : dat.latitude,
 							lng : dat.longitude,
-							message : 'Name: ' + dat.merchantName + ' Industry: ' + dat.industry
+							message : 'Name: ' + dat.name + ' Empty/Available: ' + dat.emptySlots + '/' + dat.freeBikes
 						}
 				  });
 				$scope.markers = markerData; 
@@ -29,7 +29,8 @@ app
 			    }, 10000);
 
 			    updateData = function() {
-				$http.get("../rest/merchants/-37.8140000/144.9633200").success(
+				//$http.get("../rest/merchants/-37.8140000/144.9633200").success(
+				$http.get("../rest/bikestations").success(
 					function(data) {
 					    // Store the data
 					    $scope.sensorData = data;
