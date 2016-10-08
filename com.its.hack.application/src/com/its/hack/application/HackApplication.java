@@ -1,21 +1,31 @@
 package com.its.hack.application;
 
+import java.io.InputStream;
+import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 
+import org.apache.http.HttpResponse;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 import org.osgi.service.component.annotations.Component;
+
+import com.its.hack.converter.MerchantPointOfInterestToMerchantListConverter;
+import com.its.hack.mastercard.api.locationservices.RequestConfig;
+import com.its.hack.model.BikeStation;
+import com.its.hack.model.Merchant;
+import com.its.hack.traffic.api.HttpRequestController;
+import com.its.hack.traffic.api.TrafficAPIConstants;
+import com.mastercard.api.core.ApiConfig;
+import com.mastercard.api.core.model.RequestMap;
+import com.mastercard.api.places.MerchantPointOfInterest;
 
 import osgi.enroute.configurer.api.RequireConfigurerExtender;
 import osgi.enroute.google.angular.capabilities.RequireAngularWebResource;
 import osgi.enroute.rest.api.REST;
 import osgi.enroute.twitter.bootstrap.capabilities.RequireBootstrapWebResource;
 import osgi.enroute.webserver.capabilities.RequireWebServerExtender;
-
-import com.its.hack.converter.MerchantPointOfInterestToMerchantListConverter;
-import com.its.hack.mastercard.api.locationservices.RequestConfig;
-import com.its.hack.model.Merchant;
-import com.mastercard.api.core.ApiConfig;
-import com.mastercard.api.core.model.RequestMap;
-import com.mastercard.api.places.MerchantPointOfInterest;
 
 @RequireAngularWebResource(resource = { "angular.js", "angular-resource.js", "angular-route.js" }, priority = 1000)
 @RequireBootstrapWebResource(resource = "css/bootstrap.css")
@@ -56,5 +66,41 @@ public class HackApplication implements REST {
         List<Merchant> merchantList = MerchantPointOfInterestToMerchantListConverter.convertMerchantPointOfInterestToMerchantList(response);
 
         return merchantList;
+	}
+	
+	public List<BikeStation> getBikeStations() 
+	{
+		HttpRequestController controller = new HttpRequestController();
+		try 
+		{
+			HttpResponse response = controller.getRequest(TrafficAPIConstants.URL, TrafficAPIConstants.JSON_HEADER);
+						
+			if ((response!= null) &&  response.getStatusLine().getStatusCode() != 200) {
+				throw new RuntimeException("Failed : HTTP error code : "
+				   + response.getStatusLine().getStatusCode());
+			}
+
+			InputStream input = response.getEntity().getContent();
+			String responseResult = controller.convertStreamToString(input);
+			JSONParser parser = new JSONParser();
+			JSONObject json = (JSONObject)parser.parse(responseResult);
+			JSONObject networkJson = (JSONObject)json.get(TrafficAPIConstants.NETWORK_KEY);
+			JSONArray stationJsonArray = (JSONArray)networkJson.get(TrafficAPIConstants.STATIONS_KEY);
+			Iterator stationIterator = stationJsonArray.iterator();
+			while (stationIterator.hasNext()) 
+			{
+			  JSONObject stationJson = (JSONObject)stationIterator.next();
+			  System.out.println(stationJson.get("empty_slots"));
+			}
+		}
+		catch (Exception ex)
+		{
+			System.out.println("GET bike stations failed: " + ex.getMessage());
+		}
+		finally {
+			controller.close();
+		}
+		
+		return Collections.<BikeStation>emptyList();
 	}
 }

@@ -12,6 +12,7 @@ Bundle-Description: \
 
 Private-Package: \
 	com.its.hack.application,\
+	com.its.hack.traffic.api,\
 	com.its.hack.model,\
 	com.its.hack.mastercard.api.locationservices,\
 	com.its.hack.converter
