@@ -1,6 +1,11 @@
 package com.its.hack.application;
 
+import java.util.Collections;
+import java.util.List;
+
 import org.osgi.service.component.annotations.Component;
+
+import com.its.hack.model.Merchant;
 
 import osgi.enroute.configurer.api.RequireConfigurerExtender;
 import osgi.enroute.google.angular.capabilities.RequireAngularWebResource;
@@ -19,6 +24,9 @@ public class HackApplication implements REST {
 		return string.toUpperCase();
 	}
 	
-	
+	public List<Merchant> getMerchants(String latitude, String longitude){
+		return Collections.<Merchant>emptyList();
+	}
+
 
 }
