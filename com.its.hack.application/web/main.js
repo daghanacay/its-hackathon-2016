@@ -48,9 +48,9 @@ app
 						markers : {},
 						layers : {
 						    baselayers : {
-							osm : {
-							    name : 'OpenStreetMap',
-							    url : 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+							ocm : {
+							    name : 'OpenCycleMap',
+							    url : 'http://{s}.tile.opencyclemap.org/cycle/{z}/{x}/{y}.png',
 							    type : 'xyz'
 							}
 						    }

@@ -13,13 +13,56 @@
 <link rel="stylesheet" type="text/css"
 href="/osgi.enroute.webresource/${bsn}/${Bundle-Version}/*.css">
    
+    	<style type="text/css">
+            /* Pane configuration */
+            .left.col { width: 250px; }
+            .right.col { left: 250px; right: 0; }
+            .header.row { height: 75px; line-height: 75px; }
+            .body.row { top: 75px; bottom: 50px; }
+            .footer.row { height: 50px; bottom: 0; line-height: 50px; }
+            .row { margin-left: 0px; margin-right: 0px;
+        </style>
+
   </head>
 
-  <body ng-controller="MainHeatmapController">
-    
-    	<leaflet lf-center="center" markers="markers" layers="layers"
-		width="100%" height="500px"></leaflet>
+  <body ng-controller="MainHeatmapController"> 
+
+
+<div class="left col">
+            <div class="header row">
+                Navigation
+            </div>
+            <div class="body row scroll-y">
+                <ul class="listview">
+                    <li class="selected">Area Map</li><li>My Location</li><li>Weather</li><li>Book Now</li><li>Coupons</li>
+                </ul>
+            </div>
+            <div class="footer row">
+                ITS Hackathoin 2016
+            </div>
+        </div>
+        <div class="right col">
+            <div class="header row">
+                Make-Create Bike Tripper
+            </div>
+            <div class="body row scroll-y">
+            
+            <leaflet lf-center="center" markers="markers" layers="layers"
+		width="100%" height="500px" align=center></leaflet>
 		<li><strong ng-bind="eventDetected"></strong> event caught in listener.</li>
-    
+		
+                <h3>A pretty list</h3>
+                <ul class="listview inset">
+                    <li>One</li><li>Two</li><li>Three</li>
+                </ul>
+
+                <p>... some basic text...</p>
+
+            </div>
+            <div class="footer row">
+                Some status text here
+            </div>
+        </div>
+   
   </body>
 </html>
