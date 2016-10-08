@@ -21,33 +21,58 @@ JPM-Command:			hack
 	{readme.md}, \
 	{configuration=configuration}, \
 	{static=static}, \
-	web=web
+	web=web, \
+	resource/its_hackathon_prod_production.p12
 
 -buildpath: \
 	osgi.enroute.base.api, \
 	lib/places-1.0.2.jar;version=file, \
-	lib/sdk-api-core-1.1.1.jar;version=file, \
+	lib/sdk-api-core-1.0.0.jar;version=file, \
 	lib/signpost-core-1.2.1.2.jar;version=file, \
 	lib/httpclient-4.5.2.jar;version=file, \
-	lib/commons-logging-1.1.3.jar;version=file
+	lib/commons-logging-1.1.3.jar;version=file, \
+	lib/commons-codec-1.10.jar;version=file, \
+	lib/json-simple-1.1.1.jar;version=file, \
+	lib/httpcore-4.4.5.jar;version=file
 	
+DynamicImport-Package: *
 	
 -testpath: \
 	osgi.enroute.junit.wrapper;version=4.12
 Export-Package: \
 	com.mastercard.api.*,\
-	org.apache.http.*,\
-	org.apache.http.config,\
-	org.apache.http.impl,\
-	org.apache.http.impl.entity,\
-	org.apache.http.impl.io,\
-	org.apache.http.io,\
-	org.apache.http.message,\
-	org.apache.http.params,\
+	org.apache.http,\
 	org.apache.http.pool,\
 	org.apache.http.protocol,\
+	org.apache.http,\
+	org.json.simple.parser,\
+	org.apache.http.params,\
+	org.apache.http.auth.params,\
+	org.apache.http.conn.params,\
+	org.apache.http.cookie.params,\
+	org.apache.http.auth,\
+	org.apache.http.client.config,\
+	org.apache.http.client.entity,\
+	org.apache.http.client.params,\
+	org.apache.http.client.protocol,\
+	org.apache.http.client.utils,\
+	org.apache.http.conn,\
+	org.apache.http.conn.routing,\
+	org.apache.http.conn.scheme,\
+	org.apache.http.conn.util,\
+	org.apache.http.cookie,\
+	org.apache.http.impl.auth,\
+	org.apache.http.impl.conn,\
+	org.apache.http.impl.cookie,\
+	org.apache.http.impl.execchain,\
+	org.apache.http.impl.io,\
 	org.apache.http.ssl,\
+	org.apache.http.io,\
+	org.apache.http.message,\
+	org.apache.http.config,\
 	org.apache.log,\
+	org.apache.http.impl.entity,\
+	org.apache.http.impl,\
 	org.apache.log4j,\
 	org.ietf.jgss,\
 	org.apache.http.concurrent,\

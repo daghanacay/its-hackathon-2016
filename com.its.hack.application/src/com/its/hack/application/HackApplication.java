@@ -28,7 +28,7 @@ public class HackApplication implements REST {
 	private static String CONSUMER_KEY_VALUE 	= "0_9siZ0jCU9an62Wb7omXsjNGSE5McR8vkG0FT7G017df549!f380dfc0e8934003913a2351ff8f40190000000000000000";
 	private static String KEY_ALIAS_VALUE 		= "its_hackathon_prod";
 	private static String KEY_PASSWORD_VALUE 	= "priceless";
-	private static String KEY_PATH_VALUE 		= "C:/Georgin/Workspaces/hackathon/keystore/its_hackathon_prod_production.p12";
+	private static String KEY_PATH_VALUE 		= "resource/its_hackathon_prod_production.p12";
 	
 	public String getUpper(String string) {
 	
@@ -44,7 +44,7 @@ public class HackApplication implements REST {
         InputStream is = new FileInputStream(KEY_PATH_VALUE); // e.g. /Users/yourname/project/sandbox.p12 | C:\Users\yourname\project\sandbox.p12
         ApiConfig.setAuthentication(new OAuthAuthentication(consumerKey, is, keyAlias, keyPassword));   // You only need to set this once
 
-        ApiConfig.setSandbox(true);     // For production: use ApiConfig.setSandbox(false);
+        ApiConfig.setSandbox(false);     // For production: use ApiConfig.setSandbox(false);
 
         RequestMap map = new RequestMap();
         map.set("Mcc_Codes", "true");
