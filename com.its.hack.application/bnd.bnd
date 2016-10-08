@@ -11,7 +11,8 @@ Bundle-Description: \
 	${warning;Please update this Bundle-Description in com.its.hack.application/bnd.bnd}
 
 Private-Package:  \
-	com.its.hack.application
+	com.its.hack.application,\
+	
 
 EnRoute-Application: 	com.its.hack
 JPM-Command:			hack
@@ -24,7 +25,9 @@ JPM-Command:			hack
 
 -buildpath: \
 	osgi.enroute.base.api, \
-	lib/places-1.0.2.jar;version=file
+	
 	
 -testpath: \
 	osgi.enroute.junit.wrapper;version=4.12
+Export-Package: \
+	

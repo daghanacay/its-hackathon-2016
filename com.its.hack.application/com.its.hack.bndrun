@@ -11,7 +11,7 @@ JPM-Command:					hack
 -runfw:						org.eclipse.osgi
 
 -runrequires:  \
-	osgi.identity;filter:='(osgi.identity=com.its.hack.application)'
+	osgi.identity;filter:='(osgi.identity=com.its.hack.application)',\
 
 -runbundles: \
 	${error;Resolve first}
