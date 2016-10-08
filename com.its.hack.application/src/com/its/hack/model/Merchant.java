@@ -12,8 +12,5 @@ public class Merchant implements Serializable {
 	
 	public Object longitude; // MerchantPOIResponse.places.place[0].longitude
 	
-	public String industry; // MerchantPOIResponse.places.place[0].industry
-	// Remove this
-	public double heat;
-
+	public String industry;
 }

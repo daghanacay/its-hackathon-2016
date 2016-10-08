@@ -45,12 +45,12 @@ public class HackApplication implements REST {
 		
 	}
 
+
 	public List<Merchant> getMerchants(String lat, String lon) throws Exception
 	{
 		RequestConfig config = new RequestConfig(CONSUMER_KEY_VALUE, KEY_ALIAS_VALUE, KEY_PASSWORD_VALUE, KEY_PATH_VALUE);
         ApiConfig.setAuthentication(config.getAuthentication());
         ApiConfig.setSandbox(false);
-
         RequestMap map = new RequestMap();
         map.set("radiusSearch", "true");
         map.set("unit", "km");
