@@ -2,7 +2,8 @@
 # HACK APPLICATION DEBUG RUN SPECIFICATION
 #
 
--include: ~com.its.hack.bndrun
+-include: ~com.its.hack.bndrun, \
+
 
 -runrequires.debug:  ${debug-bundles}
 
@@ -35,7 +36,7 @@
 	osgi.enroute.executor.simple.provider;version='[1.0.0,1.0.1)',\
 	osgi.enroute.google.angular.webresource;version='[1.4.4,1.4.5)',\
 	osgi.enroute.logger.simple.provider;version='[1.1.1,1.1.2)',\
-	osgi.enroute.rest.simple.provider;version='[2.0.2,2.0.3)',\
 	osgi.enroute.twitter.bootstrap.webresource;version='[3.3.5,3.3.6)',\
 	osgi.enroute.web.simple.provider;version='[1.3.3,1.3.4)',\
-	osgi.enroute.webconsole.xray.provider;version='[2.0.0,2.0.1)'
+	osgi.enroute.webconsole.xray.provider;version='[2.0.0,2.0.1)',\
+	osgi.enroute.rest.simple.provider;version='[2.0.2,2.0.3)'
