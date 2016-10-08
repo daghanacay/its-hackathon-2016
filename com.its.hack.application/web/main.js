@@ -21,7 +21,7 @@ app
 						return {
 							lat : dat.latitude,
 							lng : dat.longitude,
-							message : 'TODO add data to pop up'
+							message : 'Name: ' + dat.merchantName + ' Industry: ' + dat.industry
 						}
 				  });
 				$scope.markers = markerData; 
@@ -29,7 +29,7 @@ app
 			    }, 10000);
 
 			    updateData = function() {
-				$http.get("../rest/merchants").success(
+				$http.get("../rest/merchants/-37.8140000/144.9633200").success(
 					function(data) {
 					    // Store the data
 					    $scope.sensorData = data;
