@@ -7,5 +7,4 @@ public class ApiConstants {
 	public static final String keyAlias = "its_hackathon_prod";
 	
 	public static final String keyPassword = "priceless";
-	
 }
