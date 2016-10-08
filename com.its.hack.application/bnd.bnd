@@ -10,8 +10,9 @@ Bundle-Description: \
 	\
 	${warning;Please update this Bundle-Description in com.its.hack.application/bnd.bnd}
 
-Private-Package:  \
-	com.its.hack.application
+Private-Package: \
+	com.its.hack.application,\
+	com.its.hack.model
 
 EnRoute-Application: 	com.its.hack
 JPM-Command:			hack
