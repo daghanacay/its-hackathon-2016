@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+# its-hackathon-2016
+
+https://developer.mastercard.com/documentation/places/
+=======
 <h1><img src="http://enroute.osgi.org/img/enroute-logo-64.png" witdh=40px style="float:left;margin: 0 1em 1em 0;width:40px">
 OSGi enRoute Archetype</h1>
 
@@ -6,3 +11,4 @@ This repository represents a template workspace for bndtools, it is the easiest 
 [1]: http://enroute.osgi.org/quick-start.html
 [2]: http://enroute.osgi.org/tutorial_base/800-ci.html
 [3]: https://www.gradle.org/
+>>>>>>> ba0c9f1e59a168f517df8a90462a26f498e04791
