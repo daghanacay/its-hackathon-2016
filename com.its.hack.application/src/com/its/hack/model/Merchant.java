@@ -14,6 +14,8 @@ public class Merchant implements Serializable {
 	public BigDecimal longitude;
 	
 	public String industry;
+	// Remove this
+	public double heat;
 
 	
 }
