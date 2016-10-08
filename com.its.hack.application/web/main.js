@@ -9,6 +9,16 @@ app
 			function($scope, $http, $interval) {
 			     var mapEvents = ['click', 'contextmenu', 'popupopen', 'popupclose'];
 	             var eventName = 'leafletDirectiveMap.' + 'popupopen';
+	             
+	             var local_icons = {
+	            	        default_icon: {
+	            	            iconUrl: '../resources/bike.png',
+	            	            iconSize:     [45, 45],
+	            	            // iconAnchor:   [0, 0],
+	            	        }
+	            	    };
+
+	             
 	             $scope.$on(eventName, function(event){
 	              // TODO write here fetching the destination data and drawing it
 	                  $scope.eventDetected = event.name;
@@ -21,7 +31,8 @@ app
 						return {
 							lat : dat.latitude,
 							lng : dat.longitude,
-							message : 'Name: ' + dat.name + ' Empty/Available: ' + dat.emptySlots + '/' + dat.freeBikes
+							message : 'Name: ' + dat.name + ' Bikes Available: ' + dat.freeBikes + ', Empty Slots: ' + dat.emptySlots,
+							icon: local_icons.default_icon
 						}
 				  });
 				$scope.markers = markerData; 
@@ -36,6 +47,10 @@ app
 					    $scope.sensorData = data;
 					});
 			    }
+			    
+			    angular.extend($scope, {
+			        icons: local_icons
+			    });
 
 			    angular
 				    .extend(
