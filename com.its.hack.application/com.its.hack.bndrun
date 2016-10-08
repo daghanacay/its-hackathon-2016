@@ -1,0 +1,17 @@
+#
+#  RUN SPECIFICATION
+#
+
+
+Bundle-Version:				1.0.0.${tstamp}
+Bundle-SymbolicName:		com.its.hack.application.launch
+JPM-Command:					hack
+
+
+-runfw:						org.eclipse.osgi
+
+-runrequires:  \
+	osgi.identity;filter:='(osgi.identity=com.its.hack.application)'
+
+-runbundles: \
+	${error;Resolve first}
