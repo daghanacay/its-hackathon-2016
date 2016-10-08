@@ -14,7 +14,8 @@ Private-Package: \
 	com.its.hack.application,\
 	com.its.hack.model,\
 	com.its.hack.mastercard.api.locationservices,\
-	com.its.hack.converter
+	com.its.hack.converter,\
+	com.its.hack.traffic.api
 
 EnRoute-Application: 	com.its.hack
 JPM-Command:			hack
