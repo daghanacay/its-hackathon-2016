@@ -1,0 +1,19 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+
+    <name> -- <role> -- <twitter>
+    Cameron Leeson -- UI Development --
+    Daghan Acay -- Release Manager --
+    Edison Jinger -- Back-end Development --
+    Georgin Baby -- Back-end Development --
+	Amy Soyka -- Fron-end Development -- @amysoyka
+
+# THANKS
+
+    <name>
+
+# TECHNOLOGY COLOPHON
+
+    Java
