@@ -11,7 +11,7 @@ app
 	             var eventName = 'leafletDirectiveMap.' + 'popupopen';
 	             
 	             var local_icons = {
-	            	        default_icon: {
+	            	        bike_icon: {
 	            	            iconUrl: '../resources/bike.png',
 	            	            iconSize:     [45, 45],
 	            	            // iconAnchor:   [0, 0],
@@ -28,6 +28,7 @@ app
 	              // TODO write here fetching the destination data and drawing it
 	                  $scope.eventDetected = args.leafletEvent.popup._latlng.lat;
 	                  console.log(args.leafletEvent.latlng);
+	                  $scope.eventData = args.leafletEvent.popup;
 	             });
 	            
 			    
@@ -38,7 +39,7 @@ app
 							lat : dat.latitude,
 							lng : dat.longitude,
 							message : 'Name: ' + dat.name + ' Bikes Available: ' + dat.freeBikes + ', Empty Slots: ' + dat.emptySlots,
-							icon: local_icons.default_icon
+							icon: local_icons.bike_icon
 						}
 				  });
 				$scope.markers = markerData; 

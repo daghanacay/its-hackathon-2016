@@ -34,7 +34,7 @@ href="/osgi.enroute.webresource/${bsn}/${Bundle-Version}/*.css">
             </div>
             <div class="body row scroll-y">
                 <ul class="listview">
-                    <li class="selected">Area Map</li><li>My Location</li><li>Get Directions</li><li>Weather</li><li>Book A Bike</li><li>Local Coupons</li>
+                    <li class="selected">Bike Path Map</li><li>My Location</li><li>Get Directions</li><li>Weather</li><li>Book A Bike</li><li>Local Coupons</li>
                 </ul>
             </div>
             <div class="footer row">
@@ -48,14 +48,16 @@ href="/osgi.enroute.webresource/${bsn}/${Bundle-Version}/*.css">
             <div class="body row scroll-y">
             
             <leaflet lf-center="center" markers="markers" layers="layers"
-		width="100%" height="500px" align=center></leaflet>
+		width="100%" height="400px" align=center></leaflet>
 		
-                <h3>A pretty list</h3>
+                <h3>Bike Station Information</h3>
                 <ul class="listview inset">
-                    <li>One</li><li>Two</li><li>Three</li>
+                    <li><strong ng-bind="eventData._content"></strong></li>
+                    <li>Latitude: <strong ng-bind="eventData._latlng.lat"></strong></li>
+                    <li>Longitude: <strong ng-bind="eventData._latlng.lng"></strong></li>
                 </ul>
 
-                <p>... some basic text...</p>
+                <p>Select a bike station to find out more details.</p>
 
             </div>
             <div class="footer row">
