@@ -15,7 +15,12 @@ app
 	            	            iconUrl: '../resources/bike.png',
 	            	            iconSize:     [45, 45],
 	            	            // iconAnchor:   [0, 0],
-	            	        }
+	            	        },
+     	        			merchant_icon: {
+     	        				iconUrl: '../resources/mastercard.png',
+     	        				iconSize:     [45, 45],
+     	        				// iconAnchor:   [0, 0],
+     	        			}
 	            	    };
 
 	             
