@@ -22,13 +22,39 @@ app
 	             $scope.$on(eventName, function(event, args){
 	              // TODO write here fetching the destination data and drawing it
 	                  $scope.eventDetected = args.leafletEvent.popup._latlng.lat;
-	                  console.log(args.leafletEvent.latlng);
+	                  //console.log(args.leafletEvent.latlng);
+	                  getMerchants();
 	             });
 	            
 			    
 			    $interval(function() {
 				updateData();
-				markerData = $scope.sensorData.map(function(dat) {
+				}, 10000);
+
+				getMerchants = function(){
+				$http.get("../rest/merchants/-37.8140000/144.9633200").success(
+					function(data) {
+					    // Store the data
+					    $scope.marchantData = data;
+					    $scope.merchantMarkerData = $scope.marchantData.map(function(dat) {
+						return {
+							lat : dat.latitude,
+							lng : dat.longitude,
+							message : 'merchant',
+							icon: local_icons.default_icon
+						}
+				  });
+				$scope.markers = $scope.merchantMarkerData.concat($scope.parkMarkerData); 
+					});
+}
+
+
+			    updateData = function() {
+				$http.get("../rest/bikestations").success(
+					function(data) {
+					    // Store the data
+					    $scope.sensorData = data;
+					    $scope.parkMarkerData = $scope.sensorData.map(function(dat) {
 						return {
 							lat : dat.latitude,
 							lng : dat.longitude,
@@ -36,16 +62,7 @@ app
 							icon: local_icons.default_icon
 						}
 				  });
-				$scope.markers = markerData; 
-				
-			    }, 10000);
-
-			    updateData = function() {
-				//$http.get("../rest/merchants/-37.8140000/144.9633200").success(
-				$http.get("../rest/bikestations").success(
-					function(data) {
-					    // Store the data
-					    $scope.sensorData = data;
+				$scope.markers = $scope.parkMarkerData; 
 					});
 			    }
 			    
