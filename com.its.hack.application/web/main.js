@@ -19,9 +19,10 @@ app
 	            	    };
 
 	             
-	             $scope.$on(eventName, function(event){
+	             $scope.$on(eventName, function(event, args){
 	              // TODO write here fetching the destination data and drawing it
-	                  $scope.eventDetected = event.name;
+	                  $scope.eventDetected = args.leafletEvent.popup._latlng.lat;
+	                  console.log(args.leafletEvent.latlng);
 	             });
 	            
 			    

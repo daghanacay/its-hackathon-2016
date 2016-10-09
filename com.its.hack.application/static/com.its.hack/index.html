@@ -34,7 +34,7 @@ href="/osgi.enroute.webresource/${bsn}/${Bundle-Version}/*.css">
             </div>
             <div class="body row scroll-y">
                 <ul class="listview">
-                    <li class="selected">Area Map</li><li>My Location</li><li>Weather</li><li>Book Now</li><li>Coupons</li>
+                    <li class="selected">Area Map</li><li>My Location</li><li>Get Directions</li><li>Weather</li><li>Book A Bike</li><li>Local Coupons</li>
                 </ul>
             </div>
             <div class="footer row">
@@ -49,7 +49,6 @@ href="/osgi.enroute.webresource/${bsn}/${Bundle-Version}/*.css">
             
             <leaflet lf-center="center" markers="markers" layers="layers"
 		width="100%" height="500px" align=center></leaflet>
-		<li><strong ng-bind="eventDetected"></strong> event caught in listener.</li>
 		
                 <h3>A pretty list</h3>
                 <ul class="listview inset">
@@ -60,7 +59,7 @@ href="/osgi.enroute.webresource/${bsn}/${Bundle-Version}/*.css">
 
             </div>
             <div class="footer row">
-                Some status text here
+                Debug: <strong ng-bind="eventDetected"></strong> event caught in listener.
             </div>
         </div>
    
