@@ -46,7 +46,7 @@ app
 						return {
 							lat : dat.latitude,
 							lng : dat.longitude,
-							message : 'Name: ' + dat.name + ' Bikes Available: ' + dat.freeBikes + ', Empty Slots: ' + dat.emptySlots,
+							message : 'Name: ' + dat.merchantName + ' Industry: ' + dat.industrys,
 							icon: local_icons.merchant_icon
 						}
 				  });
